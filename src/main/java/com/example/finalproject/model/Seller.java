@@ -1,9 +1,11 @@
 package com.example.finalproject.model;
 
+import com.example.finalproject.dto.SellerRequestDTO;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.util.List;
 
 @Entity
@@ -21,7 +23,17 @@ public class Seller {
     @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false)
+    @Email(message = "Email must be in this format: example@example.com")
+    private String email;
+
     @OneToMany(mappedBy = "seller", fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("seller")
+    @JsonIgnoreProperties({"seller", "purchaseItems"})
     private List<Advertisement> advertisements;
+
+
+    public Seller(SellerRequestDTO sellerRequestDTO){
+        this.name = sellerRequestDTO.getName();
+        this.email = sellerRequestDTO.getEmail();
+    }
 }

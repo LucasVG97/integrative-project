@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "931dd803-c60e-428b-839c-16ca003587b8",
+		"_postman_id": "0eec461d-ef4a-47d5-998e-808f11290c74",
 		"name": "Projeto Integrador - Grupo 8",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -352,6 +352,111 @@
 									"key": "order",
 									"value": "asc"
 								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Requisito 06",
+			"item": [
+				{
+					"name": "Find All Sellers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/api/v1/fresh-products/seller",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"fresh-products",
+								"seller"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Seller By Seller Code",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/api/v1/fresh-products/seller/1",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"fresh-products",
+								"seller",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create New Seller",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Mauri\",\n    \"email\": \"mauri@email.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/api/v1/fresh-products/seller",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"fresh-products",
+								"seller"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Seller",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Lucas\",\n    \"email\": \"lucas_seller@email.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/api/v1/fresh-products/seller/1",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"fresh-products",
+								"seller",
+								"1"
 							]
 						}
 					},
