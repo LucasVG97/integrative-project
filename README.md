@@ -305,10 +305,6 @@ a LATAM, criando os artefatos necessários para permitir as seguintes funcionali
 </details>
 
 
-## :file_folder: Download Endpoints
-
-- [Collection (endpoints)](src/main/resources/projeto-integrador.postman_collection.json)
-
 ## :blue_book: Documentação via Swagger
 
 Você pode acessar a documentação via Swagger no link a seguir:
@@ -316,6 +312,10 @@ Você pode acessar a documentação via Swagger no link a seguir:
 ```http
   http://localhost:8080/swagger-ui.html
 ```
+
+## :file_folder: Download Endpoints
+
+- [Collection (endpoints)](src/main/resources/projeto-integrador.postman_collection.json)
 
 ## :file_folder: Download User Story
 
