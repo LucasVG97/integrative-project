@@ -309,15 +309,15 @@ a LATAM, criando os artefatos necessários para permitir as seguintes funcionali
 
 - [Collection (endpoints)](src/main/resources/projeto-integrador.postman_collection.json)
 
-## :blue_book: Swagger Documentation
+## :blue_book: Documentação via Swagger
 
-You can access the Swagger Documentation by the link down below
+Você pode acessar a documentação via Swagger no link a seguir:
 
 ```http
   http://localhost:8080/swagger-ui.html
 ```
 
-## :file_folder: Download User Story File
+## :file_folder: Download User Story
 
 - [User Story](src/main/resources/Requisito-6.pdf)
 
