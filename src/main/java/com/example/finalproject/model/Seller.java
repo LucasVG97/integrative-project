@@ -6,6 +6,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
@@ -30,6 +31,12 @@ public class Seller {
     @OneToMany(mappedBy = "seller", fetch = FetchType.LAZY)
     @JsonIgnoreProperties({"seller", "purchaseItems"})
     private List<Advertisement> advertisements;
+
+    @Column
+    private Long sales;
+
+    @Column
+    private String rating;
 
 
     public Seller(SellerRequestDTO sellerRequestDTO){

@@ -17,11 +17,18 @@ public class SellerDTO {
 
     private String name;
 
+    private String rating;
+
+    private Long sales;
+
     private List<AdvertisementDTO> advertisements;
 
     public SellerDTO(Seller seller){
         this.name = seller.getName();
+        this.rating = seller.getRating();
+        this.sales = seller.getSales();
         this.advertisements = AdvertisementDTO.convertListToResponse(seller.getAdvertisements());
+
     }
 
     public static SellerDTO convertToResponse(Seller seller){

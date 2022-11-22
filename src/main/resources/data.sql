@@ -39,12 +39,12 @@ VALUES ('Benzema');
 
 
 -- SELLER
-INSERT INTO seller(name, email)
-VALUES ('Lucas','lucas@email.com');
-INSERT INTO seller(name, email)
-VALUES ('Matheus','matheus@email.com');
-INSERT INTO seller(name, email)
-VALUES ('Cristiano Ronaldo','cr7@email.com');
+INSERT INTO seller(name, email, sales, rating)
+VALUES ('Lucas','lucas@email.com', 0, 'not enough sales to be rated');
+INSERT INTO seller(name, email, sales, rating)
+VALUES ('Matheus','matheus@email.com', 0, 'not enough sales to be rated');
+INSERT INTO seller(name, email, sales, rating)
+VALUES ('Cristiano Ronaldo','cr7@email.com', 0, 'not enough sales to be rated');
 
 
 -- ADVERTISEMENT

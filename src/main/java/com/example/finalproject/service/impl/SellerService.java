@@ -28,6 +28,8 @@ public class SellerService implements ISellerService{
     @Override
     public SellerResposeDTO createSeller(SellerRequestDTO sellerRequestDTO){
         Seller seller = new Seller(sellerRequestDTO);
+        seller.setSales(0L);
+        seller.setRating("Not enough sales to be rated");
         sellerRepo.save(seller);
         return new SellerResposeDTO(seller);
     }
