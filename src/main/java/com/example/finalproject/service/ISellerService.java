@@ -17,29 +17,12 @@ public interface ISellerService {
     List<Seller> findAll();
 
     /**
-     * It creates a seller.
-     *
-     * @param sellerRequestDTO This is the request object that contains the seller requested details.
-     * @return SellerResposeDTO
-     */
-    SellerResposeDTO createSeller(SellerRequestDTO sellerRequestDTO);
-
-    /**
      * Find a seller by seller code.
      *
      * @param sellerCode The seller code of the seller you want to find.
      * @return A Seller object.
      */
     Seller findBySellerCode(Long sellerCode);
-
-    /**
-     * It updates the seller with the given sellerCode.
-     *
-     * @param sellerRequestDTO This is the request object that contains the seller requested details.
-     * @param sellerCode The seller code of the seller to be updated.
-     * @return SellerResposeDTO
-     */
-    SellerResposeDTO updateSeller(SellerRequestDTO sellerRequestDTO, Long sellerCode);
 
     /**
      * Find all products with a given rating, ordered by sales, and return a pageable response.
@@ -51,4 +34,22 @@ public interface ISellerService {
      * @return A PageableResponseDTO object.
      */
     PageableResponseDTO findAllByRatingOrderedBySales(String rating, int page, int size, String order);
+
+    /**
+     * It creates a seller.
+     *
+     * @param sellerRequestDTO This is the request object that contains the seller requested details.
+     * @return SellerResposeDTO
+     */
+    SellerResposeDTO createSeller(SellerRequestDTO sellerRequestDTO);
+
+    /**
+     * It updates the seller with the given sellerCode.
+     *
+     * @param sellerRequestDTO This is the request object that contains the seller requested details.
+     * @param sellerCode The seller code of the seller to be updated.
+     * @return SellerResposeDTO
+     */
+    SellerResposeDTO updateSeller(SellerRequestDTO sellerRequestDTO, Long sellerCode);
+
 }

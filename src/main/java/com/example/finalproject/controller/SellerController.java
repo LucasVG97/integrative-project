@@ -30,6 +30,16 @@ public class SellerController {
         return new ResponseEntity<>(SellerDTO.convertToResponse(sellerService.findBySellerCode(sellerCode)), HttpStatus.OK);
     }
 
+    @GetMapping("/seller/sales")
+    public ResponseEntity<PageableResponseDTO> findAllByRating(
+            @RequestParam String rating,
+            @RequestParam(required = false, defaultValue = "0") int page,
+            @RequestParam(required = false, defaultValue = "2") int size,
+            @RequestParam(required = false, defaultValue = "asc") String order
+    ) {
+        return new ResponseEntity<>(sellerService.findAllByRatingOrderedBySales(rating, page, size, order), HttpStatus.OK);
+    }
+
     @PostMapping("/seller")
     public ResponseEntity<SellerResposeDTO> createSeller(@Valid @RequestBody SellerRequestDTO sellerRequestDTO){
         return new ResponseEntity<>(sellerService.createSeller(sellerRequestDTO), HttpStatus.CREATED);
@@ -40,16 +50,6 @@ public class SellerController {
             @PathVariable Long sellerCode,
             @Valid @RequestBody SellerRequestDTO sellerRequestDTO) {
         return new ResponseEntity<>(sellerService.updateSeller(sellerRequestDTO, sellerCode), HttpStatus.OK);
-    }
-
-    @GetMapping("/seller/sales")
-    public ResponseEntity<PageableResponseDTO> findAllByRating(
-            @RequestParam String rating,
-            @RequestParam(required = false, defaultValue = "0") int page,
-            @RequestParam(required = false, defaultValue = "2") int size,
-            @RequestParam(required = false, defaultValue = "asc") String order
-    ) {
-        return new ResponseEntity<>(sellerService.findAllByRatingOrderedBySales(rating, page, size, order), HttpStatus.OK);
     }
 
 }

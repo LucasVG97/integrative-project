@@ -31,26 +31,8 @@ public class SellerService implements ISellerService{
     }
 
     @Override
-    public SellerResposeDTO createSeller(SellerRequestDTO sellerRequestDTO){
-        Seller seller = new Seller(sellerRequestDTO);
-        seller.setSales(0L);
-        seller.setRating("unrated");
-        sellerRepo.save(seller);
-        return new SellerResposeDTO(seller);
-    }
-
-    @Override
     public Seller findBySellerCode(Long sellerCode) {
         return sellerRepo.findById(sellerCode).orElseThrow(() -> new NotFoundException("Seller with seller code: " + sellerCode + " not found"));
-    }
-
-    @Override
-    public SellerResposeDTO updateSeller(SellerRequestDTO sellerRequestDTO, Long sellerCode) {
-        Seller seller = sellerRepo.findById(sellerCode).orElseThrow(() -> new NotFoundException("Seller with seller code: " + sellerCode + " not found"));
-        seller.setName(sellerRequestDTO.getName());
-        seller.setEmail(sellerRequestDTO.getEmail());
-        sellerRepo.save(seller);
-        return new SellerResposeDTO(seller);
     }
 
     @Override
@@ -66,5 +48,22 @@ public class SellerService implements ISellerService{
 
     }
 
+    @Override
+    public SellerResposeDTO createSeller(SellerRequestDTO sellerRequestDTO){
+        Seller seller = new Seller(sellerRequestDTO);
+        seller.setSales(0L);
+        seller.setRating("unrated");
+        sellerRepo.save(seller);
+        return new SellerResposeDTO(seller);
+    }
+
+    @Override
+    public SellerResposeDTO updateSeller(SellerRequestDTO sellerRequestDTO, Long sellerCode) {
+        Seller seller = sellerRepo.findById(sellerCode).orElseThrow(() -> new NotFoundException("Seller with seller code: " + sellerCode + " not found"));
+        seller.setName(sellerRequestDTO.getName());
+        seller.setEmail(sellerRequestDTO.getEmail());
+        sellerRepo.save(seller);
+        return new SellerResposeDTO(seller);
+    }
 
 }
