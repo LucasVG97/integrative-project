@@ -35,7 +35,7 @@ a LATAM, criando os artefatos necessários para permitir as seguintes funcionali
 
 ## :pencil: Modelagem UML
 
-![Modelagem UML](src/main/resources/images/modelagem.jpg)
+![Modelagem UML](src/main/resources/images/modelagem.jpeg)
 
 
 ## :books: Documentação da API
@@ -238,6 +238,56 @@ a LATAM, criando os artefatos necessários para permitir as seguintes funcionali
 | `numberDays` | `int`    | **Obrigatório**. O número de dias que você quer fazer a busca                                  |
 | `category`   | `string` | **Obrigatório**. A categoria que você quer: *Refrigerado, Fresco ou Congelado*                 |
 | `order`      | `string` | **Opcional**. O tipo de ordenação que deseja aplicar: *asc = ascendente ou desc = descendente* |
+
+</details>
+
+<details>
+    <summary><h3> Requerimento 6</h3></summary>
+
+
+#### Find All Sellers
+
+```http
+  GET localhost:8080/api/v1/fresh-products/seller
+```
+
+
+#### Find Seller By Seller Code
+
+```http
+  GET localhost:8080/api/v1/fresh-products/seller/{sellerCode}
+```
+
+
+#### Create New Seller
+
+```http
+  POST localhost:8080/api/v1/fresh-products/seller
+```
+
+###### **@RequestBody**
+
+```json
+{
+  "name": "Mauri",
+  "email": "mauri@email.com"
+}
+```
+
+#### Update Seller
+
+```http
+  PUT localhost:8080/api/v1/fresh-products/seller/{sellerCode}
+```
+
+###### **@RequestBody**
+
+```json
+{
+  "name": "Lucas",
+  "email": "lucas_seller@email.com"
+}
+```
 
 </details>
 
