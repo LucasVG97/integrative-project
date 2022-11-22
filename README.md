@@ -35,7 +35,7 @@ a LATAM, criando os artefatos necessários para permitir as seguintes funcionali
 
 ## :pencil: Modelagem UML
 
-![Modelagem UML](src/main/resources/images/modelagem.jpg)
+![Modelagem UML](src/main/resources/images/modelagem.jpeg)
 
 
 ## :books: Documentação da API
@@ -241,8 +241,84 @@ a LATAM, criando os artefatos necessários para permitir as seguintes funcionali
 
 </details>
 
+<details>
+    <summary><h3> Requerimento 6</h3></summary>
+
+
+#### Find All Sellers
+
+```http
+  GET localhost:8080/api/v1/fresh-products/seller
+```
+
+
+#### Find Seller By Seller Code
+
+```http
+  GET localhost:8080/api/v1/fresh-products/seller/{sellerCode}
+```
+
+
+#### Find All Sellers by Rating Ordered By sales
+
+```http
+  GET localhost:8080/api/v1/fresh-products/seller/sales/sales?rating={rating}&page={page}&size={size}&order={order}
+```
+| Parâmetro | Tipo     | Descrição                                                                                      |
+|:----------|:---------|:-----------------------------------------------------------------------------------------------|
+| `rating`  | `string` | **Obrigatório**. O nível do vendedor: *unrated, beginner, average, trusted*                    |
+| `page`    | `int`    | **Opcional**. O número da página que deseja iniciar                                            |
+| `size`    | `int`    | **Opcional**. O número de vendedores que deseja ver por página                                 |
+| `size`    | `string` | **Opcional**. O tipo de ordenação que deseja aplicar: *asc = ascendente ou desc = descendente* |
+
+
+#### Create New Seller
+
+```http
+  POST localhost:8080/api/v1/fresh-products/seller
+```
+
+###### **@RequestBody**
+
+```json
+{
+  "name": "Mauri",
+  "email": "mauri@email.com"
+}
+```
+
+#### Update Seller
+
+```http
+  PUT localhost:8080/api/v1/fresh-products/seller/{sellerCode}
+```
+
+###### **@RequestBody**
+
+```json
+{
+  "name": "Lucas",
+  "email": "lucas_seller@email.com"
+}
+```
+
+</details>
+
 
 ## :file_folder: Download Endpoints
 
 - [Collection (endpoints)](src/main/resources/projeto-integrador.postman_collection.json)
+
+## :blue_book: Swagger Documentation
+
+You can access the Swagger Documentation by the link down below
+
+```http
+  http://localhost:8080/swagger-ui.html
+```
+
+## :file_folder: Download User Story File
+
+- [User Story](src/main/resources/Requisito-6.pdf)
+
 

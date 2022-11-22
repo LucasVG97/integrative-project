@@ -49,6 +49,9 @@ class PurchaseOrderServiceTest {
     @Mock
     private SectionRepo sectionRepo;
 
+    @Mock
+    private SellerRepo sellerRepo;
+
     private PurchaseOrder purchaseOrder;
 
     private PurchaseItem purchaseItem;

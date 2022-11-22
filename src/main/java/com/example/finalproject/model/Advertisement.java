@@ -15,7 +15,6 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 public class Advertisement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +27,6 @@ public class Advertisement {
     private BigDecimal price;
 
     @OneToMany(mappedBy = "advertisement", cascade = CascadeType.PERSIST)
-    @ToString.Exclude
     @JsonIgnore
     private List<Batch> batches;
 
@@ -39,7 +37,6 @@ public class Advertisement {
 
     @OneToMany(mappedBy = "advertisement", fetch = FetchType.LAZY)
     @JsonIgnoreProperties("advertisement")
-    @ToString.Exclude
     private List<PurchaseItem> purchaseItems;
 
 }
