@@ -1,5 +1,7 @@
 package com.example.finalproject.service.impl;
 
+import com.example.finalproject.dto.PageableResponseDTO;
+import com.example.finalproject.dto.SellerDTO;
 import com.example.finalproject.dto.SellerRequestDTO;
 import com.example.finalproject.dto.SellerResposeDTO;
 import com.example.finalproject.exception.NotFoundException;
@@ -7,6 +9,9 @@ import com.example.finalproject.model.Seller;
 import com.example.finalproject.repository.SellerRepo;
 import com.example.finalproject.service.ISellerService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,7 +34,7 @@ public class SellerService implements ISellerService{
     public SellerResposeDTO createSeller(SellerRequestDTO sellerRequestDTO){
         Seller seller = new Seller(sellerRequestDTO);
         seller.setSales(0L);
-        seller.setRating("Not enough sales to be rated");
+        seller.setRating("unrated");
         sellerRepo.save(seller);
         return new SellerResposeDTO(seller);
     }
@@ -47,5 +52,19 @@ public class SellerService implements ISellerService{
         sellerRepo.save(seller);
         return new SellerResposeDTO(seller);
     }
+
+    @Override
+    public PageableResponseDTO findAllByRatingOrderedBySales(String rating, int page, int size, String order) {
+        PageRequest pageRequest = PageRequest.of(
+                page,
+                size,
+                Sort.Direction.fromString(order), "sales"
+        );
+
+        Page<SellerDTO> seller = sellerRepo.findAllByRating(rating.toLowerCase(), pageRequest);
+        return new PageableResponseDTO().toResponse(seller);
+
+    }
+
 
 }

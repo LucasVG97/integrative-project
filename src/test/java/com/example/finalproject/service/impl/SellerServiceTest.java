@@ -2,9 +2,7 @@ package com.example.finalproject.service.impl;
 
 import com.example.finalproject.dto.SellerRequestDTO;
 import com.example.finalproject.exception.NotFoundException;
-import com.example.finalproject.model.Advertisement;
 import com.example.finalproject.model.Seller;
-import com.example.finalproject.repository.AdvertisementRepo;
 import com.example.finalproject.repository.SellerRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,11 +11,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Page;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -28,14 +28,6 @@ class SellerServiceTest {
 
     @Mock
     SellerRepo sellerRepo;
-
-    @Mock
-    AdvertisementRepo advertisementRepo;
-
-    private Advertisement advertisement;
-
-    private List<Advertisement> advertisementList;
-
     private Seller seller;
 
     private List<Seller> sellerList;
@@ -50,7 +42,7 @@ class SellerServiceTest {
                 .email("lucas@test.com")
                 .name("lucas")
                 .sales(0L)
-                .rating("Not enough sales to be rated")
+                .rating("unrated")
                 .build();
 
         sellerList.add(seller);
@@ -65,7 +57,7 @@ class SellerServiceTest {
         when(sellerRepo.findAll()).thenReturn(sellerList);
         var result = sellerService.findAll();
         verify(sellerRepo, times(1)).findAll();
-        Assertions.assertNotNull(result);
+        assertNotNull(result);
     }
 
     @Test
@@ -73,7 +65,7 @@ class SellerServiceTest {
         when(sellerRepo.findById(any())).thenReturn(Optional.ofNullable(seller));
         var result = sellerService.findBySellerCode(1L);
         verify(sellerRepo, times(1)).findById(any());
-        Assertions.assertNotNull(result);
+        assertNotNull(result);
     }
 
     @Test
@@ -87,7 +79,7 @@ class SellerServiceTest {
         sellerService.createSeller(sellerRequestDTO);
         Seller seller = new Seller(sellerRequestDTO);
         seller.setSales(0L);
-        seller.setRating("Not enough sales to be rated");
+        seller.setRating("unrated");
         verify(sellerRepo, times(1)).save(any());
     }
 
@@ -102,6 +94,15 @@ class SellerServiceTest {
     void findBySellerCodeUpdate_returnNotFoundException_whenSellerNotFound(){
         Long invalidSellerCode = 2L;
         Assertions.assertThrows(NotFoundException.class, () -> sellerService.updateSeller(sellerRequestDTO, invalidSellerCode));
+    }
+
+    @Test
+    void findAllSellersByRating_returnPageableOfSellers_whenSuccess() {
+        String rating = "unrated";
+        when(sellerRepo.findAllByRating(eq(rating), any())).thenReturn(Page.empty());
+        var result = sellerService.findAllByRatingOrderedBySales(rating, 0, 1, "asc");
+        verify(sellerRepo, times(1)).findAllByRating(eq(rating), any());
+        assertNotNull(result);
     }
 
 }

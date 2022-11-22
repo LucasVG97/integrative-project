@@ -404,6 +404,49 @@
 					"response": []
 				},
 				{
+					"name": "Find All Sellers by Rating Ordered By sales",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/api/v1/fresh-products/seller/sales?rating=unrated&page=0&size=2&order=desc",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"fresh-products",
+								"seller",
+								"sales"
+							],
+							"query": [
+								{
+									"key": "rating",
+									"value": "unrated",
+									"description": "Seller Rating: unrated - beginner - average - trusted"
+								},
+								{
+									"key": "page",
+									"value": "0",
+									"description": "starter page (starts on 0)"
+								},
+								{
+									"key": "size",
+									"value": "2",
+									"description": "number os elements in each page"
+								},
+								{
+									"key": "order",
+									"value": "desc",
+									"description": "sellers ordered by sales: must be (asc or desc)"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Create New Seller",
 					"request": {
 						"method": "POST",

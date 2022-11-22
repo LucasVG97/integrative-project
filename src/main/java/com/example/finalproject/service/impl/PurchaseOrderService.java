@@ -179,9 +179,9 @@ public class PurchaseOrderService implements IPurchaseOrderService {
     }
 
     private String getSellerRating(Long sales){
-        if(sales <= 5) return "Beginner Seller";
-        else if(sales > 15) return "Trusted Seller";
-        else return "Average Seller";
+        if(sales <= 5) return "beginner";
+        else if(sales > 15) return "trusted";
+        else return "average";
     }
 }
 

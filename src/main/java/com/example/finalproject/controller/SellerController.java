@@ -1,5 +1,6 @@
 package com.example.finalproject.controller;
 
+import com.example.finalproject.dto.PageableResponseDTO;
 import com.example.finalproject.dto.SellerRequestDTO;
 import com.example.finalproject.dto.SellerResposeDTO;
 import com.example.finalproject.dto.SellerDTO;
@@ -40,4 +41,15 @@ public class SellerController {
             @Valid @RequestBody SellerRequestDTO sellerRequestDTO) {
         return new ResponseEntity<>(sellerService.updateSeller(sellerRequestDTO, sellerCode), HttpStatus.OK);
     }
+
+    @GetMapping("/seller/sales")
+    public ResponseEntity<PageableResponseDTO> findAllByRating(
+            @RequestParam String rating,
+            @RequestParam(required = false, defaultValue = "0") int page,
+            @RequestParam(required = false, defaultValue = "2") int size,
+            @RequestParam(required = false, defaultValue = "asc") String order
+    ) {
+        return new ResponseEntity<>(sellerService.findAllByRatingOrderedBySales(rating, page, size, order), HttpStatus.OK);
+    }
+
 }

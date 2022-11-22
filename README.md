@@ -259,6 +259,19 @@ a LATAM, criando os artefatos necessários para permitir as seguintes funcionali
 ```
 
 
+#### Find All Sellers by Rating Ordered By sales
+
+```http
+  GET localhost:8080/api/v1/fresh-products/seller/sales/sales?rating={rating}&page={page}&size={size}&order={order}
+```
+| Parâmetro | Tipo     | Descrição                                                                                      |
+|:----------|:---------|:-----------------------------------------------------------------------------------------------|
+| `rating`  | `string` | **Obrigatório**. O nível do vendedor: *unrated, beginner, average, trusted*                    |
+| `page`    | `int`    | **Opcional**. O número da página que deseja iniciar                                            |
+| `size`    | `int`    | **Opcional**. O número de vendedores que deseja ver por página                                 |
+| `size`    | `string` | **Opcional**. O tipo de ordenação que deseja aplicar: *asc = ascendente ou desc = descendente* |
+
+
 #### Create New Seller
 
 ```http
@@ -296,3 +309,6 @@ a LATAM, criando os artefatos necessários para permitir as seguintes funcionali
 
 - [Collection (endpoints)](src/main/resources/projeto-integrador.postman_collection.json)
 
+## :file_folder: Download User Story File
+
+- [User Story](src/main/resources/Requisito-6.pdf)
